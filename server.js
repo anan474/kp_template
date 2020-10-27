@@ -33,8 +33,12 @@ app.use(
 
 app.use(cors());
 app.use(compression());
-app.use(helmet());
-
+app.use(
+  helmet({
+    contentSecurityPolicy: false,
+  })
+);
+app.use("/static", express.static("static"));
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
