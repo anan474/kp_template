@@ -18,8 +18,8 @@ Web ini terdiri dari backend dan frontend. Sisi backend berjalan diserver untuk 
 
 **Frontend**
 
-- EJS (templating html)
-- Tailwind CSS (utilitas/framework CSS)
+- EJS (templating html) (referensi: [1](https://ejs.co/) [2](https://github.com/mde/ejs/wiki/Using-EJS-with-Express))
+- Tailwind CSS (utilitas/framework CSS) (referensi: [1](https://tailwindcss.com/))
 
 ## Penggunaan
 
@@ -53,4 +53,14 @@ cd kp_template
 npm install
 ```
 
-4. Sesuaikan variabel db
+4. Sesuaikan variabel db di .env
+
+5. Buat database sesuai yang di .env
+
+6. Coba jalankan server
+
+```
+npm run dev
+```
+
+Jika tidak ada error dan di database terisi maka instalasi selesai. Lanjutkan dengan modifikasi kode
