@@ -3,9 +3,7 @@ module.exports = {
   buat(req, res) {
     return kabel_fo
       .create({
-        kode1: req.body.kode1,
-        kode2: req.body.kode2,
-        kode3: req.body.kode3,
+        ...req.body,
       })
       .then((hasil) => res.status(201).send(hasil))
       .catch((error) => res.status(400).send(error));
@@ -40,9 +38,7 @@ module.exports = {
         }
         return kabel_fo
           .update({
-            kode1: req.body.kode1 || hasil.kode1,
-            kode2: req.body.kode2 || hasil.kode2,
-            kode3: req.body.kode3 || hasil.kode3,
+            ...req.body,
           })
           .then((hasil2) => res.status(200).send(hasil2))
           .catch((error) => res.status(400).send(error));

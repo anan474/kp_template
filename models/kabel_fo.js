@@ -9,6 +9,9 @@ module.exports = (sequelize, DataTypes) => {
       id_a: DataTypes.INTEGER,
       tipe_b: DataTypes.INTEGER,
       id_b: DataTypes.INTEGER,
+      objek_peta: DataTypes.INTEGER,
+      lat: DataTypes.FLOAT,
+      lon: DataTypes.FLOAT,
     },
     {}
   );
