@@ -17,6 +17,10 @@ router.get("/", (req, res) => {
   res.render("index");
 });
 
+router.get("/input_data", (req, res) => {
+  res.render("input_data");
+});
+
 /*
  * Handle 404 error
  */
