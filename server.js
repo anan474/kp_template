@@ -38,10 +38,10 @@ app.use(
     contentSecurityPolicy: false,
   })
 );
+
+app.use(require("./routes"));
 app.use("/static", express.static("static"));
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
-
-app.use(require("./routes"));
 
 app.listen(app.get("port"));

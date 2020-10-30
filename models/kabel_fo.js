@@ -12,6 +12,7 @@ module.exports = (sequelize, DataTypes) => {
       objek_peta: DataTypes.INTEGER,
       lat: DataTypes.FLOAT,
       lon: DataTypes.FLOAT,
+      kode_pengadaan: DataTypes.STRING,
     },
     {}
   );

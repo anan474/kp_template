@@ -13,12 +13,17 @@ fs.readdirSync(routesPath).filter((file) => {
 /*
  * Setup routes for index
  */
+
 router.get("/", (req, res) => {
   res.render("index");
 });
 
 router.get("/input_data", (req, res) => {
   res.render("input_data");
+});
+
+router.get("/input_data_2", (req, res) => {
+  res.render("input_data_2");
 });
 
 /*

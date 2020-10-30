@@ -1,10 +1,11 @@
 module.exports = (sequelize, DataTypes) => {
-  const titik_odc = sequelize.define(
-    "titik_odc",
+  const data_contoh = sequelize.define(
+    "data_contoh",
     {
       nama: DataTypes.STRING,
+      deskripsi: DataTypes.STRING,
       tipe: DataTypes.STRING,
-      jml_slot: DataTypes.INTEGER,
+      jumlah: DataTypes.INTEGER,
       lokasi: DataTypes.STRING,
       objek_peta: DataTypes.INTEGER,
       lat: DataTypes.FLOAT,
@@ -13,6 +14,6 @@ module.exports = (sequelize, DataTypes) => {
     },
     {}
   );
-  titik_odc.associate = function (models) {};
-  return titik_odc;
+  data_contoh.associate = function (models) {};
+  return data_contoh;
 };

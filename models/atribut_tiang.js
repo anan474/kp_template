@@ -5,6 +5,7 @@ module.exports = (sequelize, DataTypes) => {
       nama: DataTypes.STRING,
       jenis: DataTypes.STRING,
       tiang: DataTypes.INTEGER,
+      kode_pengadaan: DataTypes.STRING,
     },
     {}
   );

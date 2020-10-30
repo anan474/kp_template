@@ -6,6 +6,7 @@ module.exports = (sequelize, DataTypes) => {
       no_slot: DataTypes.INTEGER,
       sumber_nama: DataTypes.STRING,
       sumber_id: DataTypes.INTEGER,
+      kode_pengadaan: DataTypes.STRING,
     },
     {}
   );

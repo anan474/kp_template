@@ -1,26 +1,26 @@
-const kabel_fo = require("../models").kabel_fo;
+const data_contoh = require("../models").data_contoh;
 module.exports = {
   buat(req, res) {
-    return kabel_fo
+    return data_contoh
       .create({
         ...req.body,
       })
-      .then((hasil) => res.status(201).send(hasil))
+      .then((hasil) => res.redirect("/input_data"))
       .catch((error) => res.status(400).send(error));
   },
   ambilSemua(req, res) {
-    return kabel_fo
+    return data_contoh
       .findAll({})
       .then((hasil) => res.status(200).send(hasil))
       .catch((error) => res.status(400).send(error));
   },
   ambilById(req, res) {
-    return kabel_fo
-      .findById(req.params.id, {})
+    return data_contoh
+      .findByPk(req.params.id, {})
       .then((hasil) => {
         if (!hasil) {
           return res.status(404).send({
-            message: "kabel_fo tidak ditemukan",
+            message: "data_contoh tidak ditemukan",
           });
         }
         return res.status(200).send(hasil);
@@ -28,15 +28,15 @@ module.exports = {
       .catch((error) => res.status(400).send(error));
   },
   update(req, res) {
-    return kabel_fo
-      .findById(req.params.id)
+    return data_contoh
+      .findByPk(req.params.id)
       .then((hasil) => {
         if (!hasil) {
           return res.status(404).send({
-            message: "kabel_fo tidak ditemukan",
+            message: "data_contoh tidak ditemukan",
           });
         }
-        return kabel_fo
+        return data_contoh
           .update({
             ...req.body,
           })
@@ -46,17 +46,21 @@ module.exports = {
       .catch((error) => res.status(400).send(error));
   },
   hapus(req, res) {
-    return kabel_fo
-      .findById(req.params.id)
+    return data_contoh
+      .findByPk(req.params.id)
       .then((hasil) => {
         if (!hasil) {
           return res.status(400).send({
-            message: "kabel_fo tidak ditemukan",
+            message: "data_contoh tidak ditemukan",
           });
         }
-        return kabel_fo
-          .destroy()
-          .then((hasil2) => res.status(204).send(hasil2))
+        return data_contoh
+          .destroy({
+            where: {
+              id: req.params.id,
+            },
+          })
+          .then((hasil2) => res.redirect("/input_data"))
           .catch((error) => res.status(400).send(error));
       })
       .catch((error) => res.status(400).send(error));
