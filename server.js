@@ -39,8 +39,8 @@ app.use(
   })
 );
 
-app.use(require("./routes"));
 app.use("/static", express.static("static"));
+app.use(require("./routes"));
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
