@@ -26,6 +26,18 @@ router.get("/input_data_2", (req, res) => {
   res.render("input_data_2");
 });
 
+router.get("/odc", (req, res) => {
+  res.render("odc/index");
+});
+
+router.get("/odc/input_koneksi", (req, res) => {
+  res.render("odc/input_koneksi");
+});
+
+router.get("/odc/input_odc_otb", (req, res) => {
+  res.render("odc/input_odc_otb");
+});
+
 /*
  * Handle 404 error
  */
