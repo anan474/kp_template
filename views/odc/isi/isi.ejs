@@ -16,8 +16,8 @@
             </div>
           </div>
           <div class="flex-1 text-right md:text-center">
-            <h5 class="font-bold uppercase text-gray-600">ODC - OTB</h5>
-            <h3 class="font-bold text-3xl">12</h3>
+            <h5 class="font-bold uppercase text-gray-600">Jumlah ODC - OTB</h5>
+            <h3 class="font-bold text-3xl" id="jml_odc_otb">--</h3>
           </div>
         </div>
       </div>
@@ -35,8 +35,8 @@
             </div>
           </div>
           <div class="flex-1 text-right md:text-center">
-            <h5 class="font-bold uppercase text-gray-600">Koneksi</h5>
-            <h3 class="font-bold text-3xl">249</h3>
+            <h5 class="font-bold uppercase text-gray-600">Jumlah Koneksi</h5>
+            <h3 class="font-bold text-3xl" id="jml_koneksi">--</h3>
           </div>
         </div>
       </div>
@@ -60,6 +60,22 @@
   </div>
 </div>
 <script>
+  window.onload = function () {
+    const jml_odc_otb = document.getElementById("jml_odc_otb");
+    fetch("/api/odc_otb")
+      .then((hasil) => hasil.json())
+      .then((hasil) => {
+        jml_odc_otb.innerText = hasil.length;
+      });
+
+    const jml_koneksi = document.getElementById("jml_koneksi");
+    fetch("/api/odc_koneksi")
+      .then((hasil) => hasil.json())
+      .then((hasil) => {
+        jml_koneksi.innerText = hasil.length;
+      });
+  };
+
   var map = L.map("map").setView([-0.06081, 109.34501], 18);
 
   L.tileLayer("http://10.128.0.207:4001/hot/{z}/{x}/{y}.png", {
