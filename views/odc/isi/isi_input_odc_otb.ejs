@@ -47,11 +47,7 @@
               <h5 class="font-bold uppercase text-gray-600">Data Baru</h5>
             </div>
             <div class="p-5">
-              <form
-                class="w-full"
-                method="post"
-                action="/jaringan_untan/api/odc_otb"
-              >
+              <form class="w-full" method="post" action="odc_otb">
                 <div class="flex flex-wrap -mx-3 mb-6">
                   <div class="w-full md:w-2/3 px-3 mb-6 md:mb-0">
                     <label
@@ -251,7 +247,7 @@
   window.onload = function () {
     const data_tabel = document.getElementById("data_tabel");
     let isi = "";
-    fetch("/api/odc_otb")
+    fetch("/jaringan_untan/api/odc_otb")
       .then((hasil) => hasil.json())
       .then((hasil) => {
         hasil.forEach((data, index) => {
@@ -283,7 +279,7 @@
 
   function ambil_data_titik(id) {
     if (id && !isNaN(id)) {
-      fetch(`/api/odc_otb/data_titik/${id}`)
+      fetch(`/jaringan_untan/api/odc_otb/data_titik/${id}`)
         .then((hasil) => hasil.json())
         .then((hasil) => {
           L.marker([hasil.lat, hasil.lon]).addTo(map);
@@ -295,7 +291,7 @@
   }
 
   function hapus(id) {
-    fetch(`/api/odc_otb/${id}`, {
+    fetch(`/jaringan_untan/api/odc_otb/${id}`, {
       method: "DELETE",
     }).then((hasil) => {
       location.reload();

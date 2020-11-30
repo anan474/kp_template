@@ -44,11 +44,7 @@
               <h5 class="font-bold uppercase text-gray-600">Data Baru</h5>
             </div>
             <div class="p-5">
-              <form
-                class="w-full"
-                method="post"
-                action="/jaringan_untan/api/odc_koneksi"
-              >
+              <form class="w-full" method="post" action="odc_koneksi">
                 <div class="flex flex-wrap -mx-3 mb-6">
                   <input
                     hidden
@@ -162,7 +158,7 @@
   window.onload = function () {
     const data_tabel = document.getElementById("data_tabel");
     let isi = "";
-    fetch("/api/odc_koneksi")
+    fetch("/jaringan_untan/api/odc_koneksi")
       .then((hasil) => hasil.json())
       .then((hasil) => {
         hasil.forEach((data, index) => {
@@ -186,7 +182,7 @@
 
     const data_sumber = document.getElementById("sumber_id");
     let isi_data_sumber = "";
-    fetch("/api/odc_otb")
+    fetch("/jaringan_untan/api/odc_otb")
       .then((hasil) => hasil.json())
       .then((hasil) => {
         daftar_odc = hasil;
@@ -221,7 +217,7 @@
   }
 
   function hapus(id) {
-    fetch(`/api/odc_koneksi/${id}`, {
+    fetch(`/jaringan_untan/api/odc_koneksi/${id}`, {
       method: "DELETE",
     }).then((hasil) => {
       location.reload();

@@ -6,7 +6,7 @@ const routesPath = `${__dirname}/`;
 fs.readdirSync(routesPath).filter((file) => {
   const routeFile = file.split(".").slice(0, -1).join(".").toString();
   return routeFile !== "index"
-    ? router.use(`/api/${routeFile}`, require(`./${routeFile}`))
+    ? router.use(`/jaringan_untan/api/${routeFile}`, require(`./${routeFile}`))
     : "";
 });
 

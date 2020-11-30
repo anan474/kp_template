@@ -62,14 +62,14 @@
 <script>
   window.onload = function () {
     const jml_odc_otb = document.getElementById("jml_odc_otb");
-    fetch("/api/odc_otb")
+    fetch("/jaringan_untan/api/odc_otb")
       .then((hasil) => hasil.json())
       .then((hasil) => {
         jml_odc_otb.innerText = hasil.length;
       });
 
     const jml_koneksi = document.getElementById("jml_koneksi");
-    fetch("/api/odc_koneksi")
+    fetch("/jaringan_untan/api/odc_koneksi")
       .then((hasil) => hasil.json())
       .then((hasil) => {
         jml_koneksi.innerText = hasil.length;
