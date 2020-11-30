@@ -18,13 +18,7 @@ router.get("/", (req, res) => {
   res.render("index");
 });
 
-router.get("/input_data", (req, res) => {
-  res.render("input_data");
-});
-
-router.get("/input_data_2", (req, res) => {
-  res.render("input_data_2");
-});
+// ODC
 
 router.get("/odc", (req, res) => {
   res.render("odc/index");
@@ -36,6 +30,28 @@ router.get("/odc/input_koneksi", (req, res) => {
 
 router.get("/odc/input_odc_otb", (req, res) => {
   res.render("odc/input_odc_otb");
+});
+
+// TIANG
+router.get("/tiang", (req, res) => {
+  res.render("tiang/index");
+});
+
+router.get("/tiang/input_tiang", (req, res) => {
+  res.render("tiang/tiang");
+});
+
+router.get("/tiang/input_atribut_tiang", (req, res) => {
+  res.render("tiang/atribut_tiang");
+});
+
+// KABEL FO
+router.get("/kabel_fo", (req, res) => {
+  res.render("kabel_fo/index");
+});
+
+router.get("/kabel_fo/input_kabel_fo", (req, res) => {
+  res.render("kabel_fo/kabel_fo");
 });
 
 /*
