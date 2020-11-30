@@ -5,7 +5,7 @@ module.exports = {
       .create({
         ...req.body,
       })
-      .then((hasil) => res.redirect("/kabel_fo/input_kabel_fo"))
+      .then((hasil) => res.redirect("/jaringan_untan/kabel_fo/input_kabel_fo"))
       .catch((error) => res.status(400).send(error));
   },
   ambilSemua(req, res) {
@@ -45,7 +45,7 @@ module.exports = {
         },
         { where: { id: req.body.id } }
       )
-      .then(res.redirect("/kabel_fo/input_kabel_fo"))
+      .then(res.redirect("/jaringan_untan/kabel_fo/input_kabel_fo"))
       .catch((error) => res.status(400).send(error));
   },
 
@@ -64,7 +64,9 @@ module.exports = {
               id: req.params.id,
             },
           })
-          .then((hasil2) => res.redirect("/kabel_fo/input_kabel_fo"))
+          .then((hasil2) =>
+            res.redirect("/jaringan_untan/kabel_fo/input_kabel_fo")
+          )
           .catch((error) => res.status(400).send(error));
       })
       .catch((error) => res.status(400).send(error));

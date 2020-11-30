@@ -5,7 +5,9 @@ module.exports = {
       .create({
         ...req.body,
       })
-      .then((hasil) => res.redirect("/tiang/input_atribut_tiang"))
+      .then((hasil) =>
+        res.redirect("/jaringan_untan/tiang/input_atribut_tiang")
+      )
       .catch((error) => res.status(400).send(error));
   },
   ambilSemua(req, res) {
@@ -43,7 +45,7 @@ module.exports = {
           },
         }
       )
-      .then(res.redirect("/tiang/input_atribut_tiang"))
+      .then(res.redirect("/jaringan_untan/tiang/input_atribut_tiang"))
       .catch((error) => res.status(400).send(error));
   },
 
@@ -62,7 +64,9 @@ module.exports = {
               id: req.params.id,
             },
           })
-          .then((hasil2) => res.redirect("/tiang/input_atribut_tiang"))
+          .then((hasil2) =>
+            res.redirect("/jaringan_untan/tiang/input_atribut_tiang")
+          )
           .catch((error) => res.status(400).send(error));
       })
       .catch((error) => res.status(400).send(error));

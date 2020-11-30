@@ -5,7 +5,7 @@ module.exports = {
       .create({
         ...req.body,
       })
-      .then((hasil) => res.redirect("/input_data"))
+      .then((hasil) => res.redirect("/jaringan_untan/input_data"))
       .catch((error) => res.status(400).send(error));
   },
   ambilSemua(req, res) {
@@ -60,7 +60,7 @@ module.exports = {
               id: req.params.id,
             },
           })
-          .then((hasil2) => res.redirect("/input_data"))
+          .then((hasil2) => res.redirect("/jaringan_untan/input_data"))
           .catch((error) => res.status(400).send(error));
       })
       .catch((error) => res.status(400).send(error));
