@@ -73,7 +73,9 @@ module.exports = {
   },
 
   data_kabel(req, res) {
-    return fetch(`http://203.24.50.236/api/0.6/way/${req.params.id}/full.json`)
+    return fetch(
+      `http://203.24.50.138:8080/api/0.6/way/${req.params.id}/full.json`
+    )
       .then((hasil) => hasil.json())
       .then((hasil) => {
         console.log(hasil);

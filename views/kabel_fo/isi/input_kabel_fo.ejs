@@ -216,7 +216,7 @@
           <td>${data.lat}</td>
           <td>${data.lon}</td>
           <td>${data.kode_pengadaan}</td>
-          <td><a href="http://203.24.50.236/way/${data.objek_peta
+          <td><a href="http://203.24.50.138:8080/way/${data.objek_peta
             }" title="buka di peta" target="_black" class="text-blue-800 underline" >${data.objek_peta
             }</a></td>
           <td>
@@ -426,11 +426,11 @@
       fetch(`/api/kabel_fo/data_kabel/${id}`)
         .then((hasil) => hasil.json())
         .then((hasil) => {
-          console.log(hasil)
-          L.polyline(hasil.titik, {color: 'red'}).addTo(map);
-          map.setView([hasil.titik[0][0], hasil.titik[0][1]], 18);
-          document.getElementById("lat").value = hasil.titik[0][0];
-          document.getElementById("lon").value = hasil.titik[0][1];
+          console.log(hasil.garis)
+          L.polyline(hasil.garis, {color: 'red'}).addTo(map);
+          map.setView([hasil.garis[0][0], hasil.garis[0][1]], 18);
+          document.getElementById("lat").value = hasil.garis[0][0];
+          document.getElementById("lon").value = hasil.garis[0][1];
         });
     }
   }
@@ -444,7 +444,7 @@
   }
 
   var map = L.map('map').setView([-0.06081, 109.34501], 18);
-  L.tileLayer('http://203.24.50.236/hot/{z}/{x}/{y}.png', {
+  L.tileLayer('http://203.24.50.138:8080/hot/hot/{z}/{x}/{y}.png', {
     attribution:
       '&copy; <a href="https://www.openstreetmap.org/copyright">Open StreetMap</a> contributors',
   }).addTo(map);
