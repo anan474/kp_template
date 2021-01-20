@@ -4,6 +4,8 @@ module.exports = (sequelize, DataTypes) => {
         {
             nama: DataTypes.STRING,
             lokasi: DataTypes.STRING,
+            lat: DataTypes.FLOAT,
+            lon: DataTypes.FLOAT,
             objek_peta_id: DataTypes.INTEGER,
         },
         {}

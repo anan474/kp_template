@@ -1,4 +1,5 @@
 const tiang = require("../models").tiang;
+const fetch = require("node-fetch");
 module.exports = {
   buat(req, res) {
     return tiang
@@ -35,6 +36,8 @@ module.exports = {
           nama: req.body.nama,
           lokasi: req.body.lokasi,
           objek_peta_id: req.body.objek_peta_id,
+          lat: req.body.lat,
+          lon: req.body.lon,
         },
         {
           where: {
@@ -63,6 +66,21 @@ module.exports = {
           })
           .then((hasil2) => res.redirect("/tiang/input_tiang"))
           .catch((error) => res.status(400).send(error));
+      })
+      .catch((error) => res.status(400).send(error));
+  },
+
+  data_titik(req, res) {
+    return fetch(`http://203.24.50.138:8080/api/0.6/node/${req.params.id}.json`)
+      .then((hasil) => hasil.json())
+      .then((hasil) => {
+        if (!hasil || !hasil.elements[0]) {
+          return res.status(404).send({
+            message: "titik tiang tidak ditemukan",
+          });
+        }
+        const { lat, lon } = hasil.elements[0];
+        return res.status(200).send({ lat, lon, tipe: "node" });
       })
       .catch((error) => res.status(400).send(error));
   },
