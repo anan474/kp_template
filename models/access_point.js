@@ -1,11 +1,11 @@
 module.exports = (sequelize, DataTypes) => {
-  const switchh = sequelize.define(
-    "switchh",
+  const access_point = sequelize.define(
+    "access_point",
     {
       nama: DataTypes.STRING,
       ip: DataTypes.STRING,
       mac: DataTypes.STRING,
-      jml_port: DataTypes.INTEGER,
+      band: DataTypes.STRING,
       lokasi: DataTypes.STRING,
       objek_peta: DataTypes.INTEGER,
       lat: DataTypes.FLOAT,
@@ -14,6 +14,6 @@ module.exports = (sequelize, DataTypes) => {
     },
     {}
   );
-  switchh.associate = function (models) {};
-  return switchh;
+  access_point.associate = function (models) {};
+  return access_point;
 };
