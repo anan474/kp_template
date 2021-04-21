@@ -54,24 +54,6 @@ router.get("/kabel_fo/input_kabel_fo", (req, res) => {
   res.render("kabel_fo/kabel_fo");
 });
 
-// Switch
-router.get("/switch", (req, res) => {
-  res.render("switch/index");
-});
-
-router.get("/switch/input_switch", (req, res) => {
-  res.render("switch/switch");
-});
-
-// Access Point
-router.get("/access_point", (req, res) => {
-  res.render("access_point/index");
-});
-
-router.get("/access_point/input_access_point", (req, res) => {
-  res.render("access_point/access_point");
-});
-
 /*
  * Handle 404 error
  */
