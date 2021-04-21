@@ -74,9 +74,16 @@
                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="jml_core">
                       Jumlah Core
                     </label>
-                    <input
-                      class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                      id="jml_core" name="jml_core" type="number" placeholder="Jumlah Core" />
+
+                      <select class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                      id="jml_core" name="jml_core"  >
+                        <option value="2">2</option>
+                        <option value="6">6</option>
+                        <option value="24">24</option>
+                        <option value="48">48</option>
+                        <option value="96">96</option>
+                        <option value="144">144</option>
+                      </select>
                   </div>
 
                   <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
@@ -238,12 +245,11 @@
               Hapus
             </button>
             
-            <a href="#edit">
-            <button  onclick="edit(${data.id
-            })" type="button" class="fa fa-edit bg-green-500 w-24 md:w-autohover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" >
-              Edit
-            </button>
-          </a>
+            <a href="/kabel_fo/edit_kabel_fo/${data.id}">
+              <button type="button" class="fa fa-edit bg-green-500 w-24 md:w-autohover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" >
+                Edit
+              </button>
+            </a>
           </td>
         </tr>`;
         });

@@ -54,6 +54,10 @@ router.get("/kabel_fo/input_kabel_fo", (req, res) => {
   res.render("kabel_fo/kabel_fo");
 });
 
+router.get("/kabel_fo/edit_kabel_fo/:id", (req, res) => {
+  res.render("kabel_fo/edit_kabel_fo");
+});
+
 /*
  * Handle 404 error
  */
