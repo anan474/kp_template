@@ -215,12 +215,31 @@
 </div>
 
 <script>
+
+  function resolve_tipe(id){
+    switch (id){
+      case 1:
+        return "ODC"
+        break;
+      case 2:
+        return "OTB"
+        break;
+      case 3:
+        return "Switch"
+        break;
+      default:
+        return ""
+
+      }
+  }
+
   window.onload = function () {
     const data_tabel = document.getElementById("data_tabel");
     let isi = "";
     fetch("/api/kabel_fo")
       .then((hasil) => hasil.json())
       .then((hasil) => {
+
         hasil.forEach((data, index) => {
           isi += `
           <tr class="text-center">
@@ -228,9 +247,9 @@
           <td>${data.nama}</td>
           <td>${data.jenis}</td>
           <td>${data.jml_core}</td>
-          <td>${data.tipe_a}</td>
+          <td>${resolve_tipe(data.tipe_a)}</td>
           <td>${data.id_a}</td>
-          <td>${data.tipe_b}</td>
+          <td>${resolve_tipe(data.tipe_b)}</td>
           <td>${data.id_b}</td>
           <td>${data.lat}</td>
           <td>${data.lon}</td>
