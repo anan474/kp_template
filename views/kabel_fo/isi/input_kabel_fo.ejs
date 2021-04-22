@@ -239,38 +239,34 @@
     fetch("/api/kabel_fo")
       .then((hasil) => hasil.json())
       .then((hasil) => {
-
         hasil.forEach((data, index) => {
           isi += `
-          <tr class="text-center">
-          <td>${index + 1}</td>
-          <td>${data.nama}</td>
-          <td>${data.jenis}</td>
-          <td>${data.jml_core}</td>
-          <td>${resolve_tipe(data.tipe_a)}</td>
-          <td>${data.id_a}</td>
-          <td>${resolve_tipe(data.tipe_b)}</td>
-          <td>${data.id_b}</td>
-          <td>${data.lat}</td>
-          <td>${data.lon}</td>
-          <td>${data.kode_pengadaan}</td>
-          <td><a href="http://203.24.50.138:8080/way/${data.objek_peta
-            }" title="Lihat Pemetaan Kabel Fiber Optik di Openstreetmap" target="_black" class="text-blue-800 underline" >${data.objek_peta
-            }</a></td>
-          
-          <td>
-            <button  onclick='if(confirm("Anda yakin mau menghapus data ini?")) { hapus(${data.id
-            })}' type="button" class="far fa-trash-alt bg-red-500 w-24 md:w-autohover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" >
-              Hapus
-            </button>
-            
-            <a href="/kabel_fo/edit_kabel_fo/${data.id}">
-              <button type="button" class="fa fa-edit bg-green-500 w-24 md:w-autohover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" >
-                Edit
-              </button>
-            </a>
-          </td>
-        </tr>`;
+            <tr class="text-center">
+              <td>${index + 1}</td>
+              <td>${data.nama}</td>
+              <td>${data.jenis}</td>
+              <td>${data.jml_core}</td>
+              <td>${resolve_tipe(data.tipe_a)}</td>
+              <td>${data.id_a}</td>
+              <td>${resolve_tipe(data.tipe_b)}</td>
+              <td>${data.id_b}</td>
+              <td>${data.lat}</td>
+              <td>${data.lon}</td>
+              <td>${data.kode_pengadaan}</td>
+              <td>
+                <a href="http://203.24.50.138:8080/way/${data.objek_peta}" title="Lihat Pemetaan Kabel Fiber Optik di Openstreetmap" target="_black" class="text-blue-800 underline" >${data.objek_peta}</a>
+              </td>
+              <td>
+                <button  onclick='if(confirm("Anda yakin mau menghapus data ini?")) { hapus(${data.id})}' type="button" class="far fa-trash-alt bg-red-500 w-24 md:w-autohover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" >
+                  Hapus
+                </button>
+                <a href="/kabel_fo/edit_kabel_fo/${data.id}">
+                  <button type="button" class="fa fa-edit bg-green-500 w-24 md:w-autohover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" >
+                    Edit
+                  </button>
+                </a>
+              </td>
+            </tr>`;
         });
         data_tabel.innerHTML = isi;
       });
