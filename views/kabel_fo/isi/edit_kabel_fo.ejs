@@ -184,7 +184,7 @@
 <script>
   window.onload = function () {
     const data_tabel = document.getElementById("data_tabel");
-    let id = 1;
+    let id = window.location.pathname.split("/").reverse()[0];
     fetch(`/api/kabel_fo/${id}`)
       .then((hasil) => hasil.json())
       .then((hasil) => {
