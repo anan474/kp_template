@@ -13,53 +13,21 @@
       <!-- Isi -->
       <div class="main-content flex-1 bg-gray-100 mt-12 md:mt-2 pb-24 md:pb-5">
         <div class="bg-blue-800 p-2 shadow text-xl text-white">
-          <h3 class="font-bold pl-2">Input Data Kabel Fiber Optik</h3>
+          <h3 class="font-bold pl-2">Edit Data Kabel Fiber Optik</h3>
         </div>
         <div class="flex flex-row flex-wrap flex-grow mt-2">
           <div class="w-full md:w-full xl:w-full p-3">
-            <!--Table Card-->
-            <div class="bg-white border-transparent rounded-lg shadow-lg">
-              <div class="bg-gray-400 border-b-2 border-gray-500 rounded-tl-lg rounded-tr-lg p-2">
-                <h5 class="font-bold uppercase text-gray-600">Table Data Kabel Fiber Optik</h5>
-              </div>
-              <div class="p-5 overflow-scroll">
-                <table class="w-full p-5 text-gray-700">
-                  <thead>
-                    <tr>
-                      <th class="text-center text-blue-900">ID</th>
-                      <th class="text-center text-blue-900">Nama</th>
-                      <th class="text-center text-blue-900">Jenis</th>
-                      <th class="text-center text-blue-900">Jumlah Core</th>
-                      <th class="text-center text-blue-900">Tipe A</th>
-                      <th class="text-center text-blue-900">ID A</th>
-                      <th class="text-center text-blue-900">Tipe B</th>
-                      <th class="text-center text-blue-900">ID B</th>
-                      <th class="text-center text-blue-900">Kode Pengadaan</th>
-                      <th class="text-center text-blue-900">Objek Peta</th>
-                      <th class="text-center text-blue-900">Aksi</th>
-                    </tr>
-                  </thead>
-
-                  <tbody id="data_tabel">
-                    <tr>
-                      <td colspan="5">Loading...</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-            <!--/table Card-->
 
             <!-- form isian -->
-            <div class="flex flex-row flex-wrap flex-grow mt-2">
+            <div class="flex flex-row flex-wrap flex-grow mt-2" id="edit">
               <div class="w-full md:w-full xl:w-full p-3">
                 <div class="bg-white border-transparent rounded-lg shadow-lg">
                   <div class="bg-gray-400 border-b-2 border-gray-500 rounded-tl-lg rounded-tr-lg p-2">
-                    <h5 class="font-bold uppercase text-gray-600">Data Baru</h5>
+                    <h5 class="font-bold uppercase text-gray-600">Edit Data</h5>
                   </div>
                   <div class="p-5">
-                    <form class="w-full" method="post" action="/api/kabel_fo">
-
+                    <form class="w-full" method="post" action="/api/kabel_fo/edit">
+                      <input type="hidden" name="id" id="id" value="">
                       <div class="flex flex-wrap -mx-3 mb-6">
                         <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                           <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="nama">
@@ -76,11 +44,12 @@
                           </label>
                           <input
                             class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                            id="jenis" name="jenis" type="text" placeholder="Jenis" value="Single Mode" />
-                        </div> 
+                            id="jenis" name="jenis" type="text" placeholder="Jenis" />
+                        </div>
                       </div>
 
                       <div class="flex flex-wrap -mx-3 mb-6">
+
                         <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                           <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="jml_core">
                             Jumlah Core
@@ -226,58 +195,27 @@
       </div>
 
       <script>
-
-        function resolve_tipe(id){
-          switch (id){
-            case 1:
-              return "ODC"
-              break;
-            case 2:
-              return "OTB"
-              break;
-            case 3:
-              return "Switch"
-              break;
-            default:
-              return ""
-
-            }
-        }
-
         window.onload = function () {
           const data_tabel = document.getElementById("data_tabel");
-          let isi = "";
-          fetch("/api/kabel_fo")
+          let id = window.location.pathname.split("/").reverse()[0];
+          fetch(`/api/kabel_fo/${id}`)
             .then((hasil) => hasil.json())
             .then((hasil) => {
-              hasil.forEach((data, index) => {
-                isi += `
-                  <tr class="text-center">
-                    <td>${index + 1}</td>
-                    <td>${data.nama}</td>
-                    <td>${data.jenis}</td>
-                    <td>${data.jml_core}</td>
-                    <td>${resolve_tipe(data.tipe_a)}</td>
-                    <td>${data.id_a}</td>
-                    <td>${resolve_tipe(data.tipe_b)}</td>
-                    <td>${data.id_b}</td>
-                    <td>${data.kode_pengadaan}</td>
-                    <td>
-                      <a href="http://203.24.50.138:8080/way/${data.objek_peta}" title="Lihat Pemetaan Kabel Fiber Optik di Openstreetmap" target="_black" class="text-blue-800 underline" >${data.objek_peta}</a>
-                    </td>
-                    <td>
-                      <button  onclick='if(confirm("Anda yakin mau menghapus data ini?")) { hapus(${data.id})}' type="button" class="far fa-trash-alt bg-red-500 w-24 md:w-autohover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" >
-                        Hapus
-                      </button>
-                      <a href="/kabel_fo/edit_kabel_fo/${data.id}">
-                        <button type="button" class="fa fa-edit bg-green-500 w-24 md:w-autohover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" >
-                          Edit
-                        </button>
-                      </a>
-                    </td>
-                  </tr>`;
-              });
-              data_tabel.innerHTML = isi;
+              document.getElementById("nama").value = hasil.nama
+              document.getElementById("jenis").value = hasil.jenis
+              document.getElementById("jml_core").value = hasil.jml_core
+              document.getElementById("kode_pengadaan").value = hasil.kode_pengadaan
+              document.getElementById("tipe_a").value = hasil.tipe_a
+              document.getElementById("id_a").value = hasil.id_a
+              document.getElementById("tipe_b").value = hasil.tipe_b
+              document.getElementById("id_b").value = hasil.id_b
+              document.getElementById("objek_peta").value = hasil.objek_peta
+              document.getElementById("lat").value = hasil.lat
+              document.getElementById("lon").value = hasil.lon
+              document.getElementById("id").value = hasil.id
+
+
+              ambil_data_kabel(hasil.objek_peta)
             });
         };
 
@@ -293,14 +231,6 @@
                 document.getElementById("lon").value = hasil.garis[0][1];
               });
           }
-        }
-
-        function hapus(id) {
-          fetch(`/api/kabel_fo/${id}`, {
-            method: "DELETE",
-          }).then((hasil) => {
-            location.reload();
-          });
         }
 
         var map = L.map('map').setView([-0.06081, 109.34501], 18);
