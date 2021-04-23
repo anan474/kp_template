@@ -59,7 +59,6 @@
             fetch(`/api/kabel_fo/data_kabel/${id}`)
               .then((hasil) => hasil.json())
               .then((hasil) => {
-                console.log(hasil.garis);
                 L.polyline(hasil.garis, { color: "red" }).addTo(map);
                 L.marker([hasil.garis[0][0], hasil.garis[0][1]], {
                   title: nama,
@@ -73,7 +72,6 @@
           fetch("/api/kabel_fo")
             .then((hasil) => hasil.json())
             .then((hasil) => {
-              console.log(hasil);
               hasil.forEach((titik) => {
                 ambil_data_kabel(titik.objek_peta, titik.nama);
               });
