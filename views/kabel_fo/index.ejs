@@ -56,7 +56,7 @@
       <script>
         function ambil_data_kabel(id, nama) {
           if (id && !isNaN(id)) {
-            fetch(`/api/kabel_fo/data_kabel/${id}`)
+            fetch(`/jaringan_untan/api/kabel_fo/data_kabel/${id}`)
               .then((hasil) => hasil.json())
               .then((hasil) => {
                 L.polyline(hasil.garis, { color: "red" }).addTo(map);

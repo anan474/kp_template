@@ -183,7 +183,7 @@
 
     function ambil_data_titik(id) {
         if (id && !isNaN(id)) {
-            fetch(`/api/tiang/data_titik/${id}`)
+            fetch(`/jaringan_untan/api/tiang/data_titik/${id}`)
                 .then((hasil) => hasil.json())
                 .then((hasil) => {
                     L.marker([hasil.lat, hasil.lon]).addTo(map);
@@ -197,7 +197,7 @@
 
 
     function hapus(id) {
-        fetch(`/api/tiang/${id}`, {
+        fetch(`/jaringan_untan/api/tiang/${id}`, {
             method: "DELETE",
         }).then((hasil) => {
             location.reload();

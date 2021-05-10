@@ -393,7 +393,7 @@
 
         function ambil_data_kabel(id) {
           if (id && !isNaN(id)) {
-            fetch(`/api/kabel_fo/data_kabel/${id}`)
+            fetch(`/jaringan_untan/api/kabel_fo/data_kabel/${id}`)
               .then((hasil) => hasil.json())
               .then((hasil) => {
                 console.log(hasil.garis)
@@ -406,7 +406,7 @@
         }
 
         function hapus(id) {
-          fetch(`/api/kabel_fo/${id}`, {
+          fetch(`/jaringan_untan/api/kabel_fo/${id}`, {
             method: "DELETE",
           }).then((hasil) => {
             location.reload();

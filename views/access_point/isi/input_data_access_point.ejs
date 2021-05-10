@@ -159,7 +159,7 @@
   const form_edit = document.getElementById("form_edit");
   let isi_form = "";
   function edit(id) {
-    fetch(`/api/access_point/${id}`)
+    fetch(`/jaringan_untan/api/access_point/${id}`)
       .then((hasil) => hasil.json())
       .then((hasil) => {
         isi_form = `
@@ -233,7 +233,7 @@
       });
   }
   function hapus(id) {
-    fetch(`/api/access_point/${id}`, {
+    fetch(`/jaringan_untan/api/access_point/${id}`, {
       method: "DELETE",
     }).then((hasil) => {
       location.reload();

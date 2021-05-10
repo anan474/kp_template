@@ -287,7 +287,7 @@
           const option_tipe_b = document.getElementById('id_b');
           let isi_option = "";
           let tipe_a = 0;
-          fetch(`/api/kabel_fo/${id}`)
+          fetch(`/jaringan_untan/api/kabel_fo/${id}`)
             .then((hasil) => hasil.json())
             .then((hasil) => {
               document.getElementById("nama").value = hasil.nama
@@ -311,7 +311,7 @@
 
         function ambil_data_kabel(id) {
           if (id && !isNaN(id)) {
-            fetch(`/api/kabel_fo/data_kabel/${id}`)
+            fetch(`/jaringan_untan/api/kabel_fo/data_kabel/${id}`)
               .then((hasil) => hasil.json())
               .then((hasil) => {
                 console.log(hasil.garis)

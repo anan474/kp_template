@@ -174,7 +174,7 @@
       });
 
     let id = window.location.pathname.split("/").reverse()[0];
-    fetch(`/api/atribut_tiang/${id}`)
+    fetch(`/jaringan_untan/api/atribut_tiang/${id}`)
       .then((hasil) => hasil.json())
       .then((hasil) => {
         document.getElementById("id").value = hasil.id;
@@ -188,7 +188,7 @@
 
   const tiang_nama = document.getElementById("tiang_nama");
   function getNamaTiang(id) {
-    fetch(`/api/tiang/`)
+    fetch(`/jaringan_untan/api/tiang/`)
       .then((hasil2) => hasil2.json())
       .then((hasil2) => {
         hasil2.forEach((data2, index) => {

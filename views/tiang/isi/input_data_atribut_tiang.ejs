@@ -203,7 +203,7 @@
 
     const tiang_nama = document.getElementById("tiang_nama");
     function getNamaTiang(id) {
-        fetch(`/api/tiang/`)
+        fetch(`/jaringan_untan/api/tiang/`)
             .then((hasil2) => hasil2.json())
             .then((hasil2) => {
                 hasil2.forEach((data2, index) => {
@@ -216,7 +216,7 @@
 
 
     function hapus(id) {
-        fetch(`/api/atribut_tiang/${id}`, {
+        fetch(`/jaringan_untan/api/atribut_tiang/${id}`, {
             method: "DELETE",
         }).then((hasil) => {
             location.reload();

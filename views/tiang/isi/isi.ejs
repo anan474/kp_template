@@ -66,7 +66,7 @@
 <script>
   function ambil_data_kabel(id, nama) {
     if (id && !isNaN(id)) {
-      fetch(`/api/tiang/data_titik/${id}`)
+      fetch(`/jaringan_untan/api/tiang/data_titik/${id}`)
         .then((hasil) => hasil.json())
         .then((hasil) => {
           L.marker([hasil.lat, hasil.lon], { title: nama }).addTo(map);
