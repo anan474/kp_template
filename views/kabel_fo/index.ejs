@@ -69,7 +69,7 @@
         }
         window.onload = function () {
           const jml_kabel_fo = document.getElementById("jml_kabel_fo");
-          fetch("/api/kabel_fo")
+          fetch("/jaringan_untan/api/kabel_fo")
             .then((hasil) => hasil.json())
             .then((hasil) => {
               hasil.forEach((titik) => {

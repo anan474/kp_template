@@ -161,7 +161,7 @@
         let isi = "";
         let tiang = '';
 
-        fetch("/api/atribut_tiang")
+        fetch("/jaringan_untan/api/atribut_tiang")
             .then((hasil) => hasil.json())
             .then((hasil) => {
                 hasil.forEach((data, index) => {
@@ -189,7 +189,7 @@
 
         const data_sumber = document.getElementById("tiang_id");
         let isi_data_sumber = "";
-        fetch("/api/tiang")
+        fetch("/jaringan_untan/api/tiang")
             .then((hasil) => hasil.json())
             .then((hasil) => {
 

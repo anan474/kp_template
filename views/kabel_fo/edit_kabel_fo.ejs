@@ -217,7 +217,7 @@
           const option = document.getElementById(id);
           let isi = "";
           if (tipe == 1) {
-            fetch("/api/odc_otb")
+            fetch("/jaringan_untan/api/odc_otb")
               .then((hasil) => hasil.json())
               .then((hasil) => {
                 hasil.forEach((data, index) => {
@@ -231,7 +231,7 @@
               });
           }//end if
           if (tipe == 2) {
-            fetch("/api/odc_otb")
+            fetch("/jaringan_untan/api/odc_otb")
               .then((hasil) => hasil.json())
               .then((hasil) => {
                 hasil.forEach((data, index) => {
@@ -245,7 +245,7 @@
               });
           }//end if
           if (tipe == 3) {
-            fetch("/api/switch")
+            fetch("/jaringan_untan/api/switch")
               .then((hasil) => hasil.json())
               .then((hasil) => {
                 hasil.forEach((data, index) => {
@@ -257,7 +257,7 @@
               });
           } //end if
           if (tipe == 4) {
-            fetch("/api/access_point")
+            fetch("/jaringan_untan/api/access_point")
               .then((hasil) => hasil.json())
               .then((hasil) => {
                 hasil.forEach((data, index) => {
