@@ -56,8 +56,34 @@
     </div>
   </div>
 </div>
+
+
 <script>
+  function ambil_data_kabel(id, nama) {
+    if (id && !isNaN(id)) {
+      fetch(`/api/tiang/data_titik/${id}`)
+        .then((hasil) => hasil.json())
+        .then((hasil) => {
+          L.marker([hasil.lat, hasil.lon], { title: nama }).addTo(map);
+          map.setView([hasil.lat, hasil.lon], 18);
+        });
+    }
+  }
+
+
   window.onload = function () {
+    fetch("/api/tiang")
+      .then((hasil) => hasil.json())
+      .then((hasil) => {
+        hasil.forEach((titik) => {
+          ambil_data_kabel(titik.objek_peta_id, titik.nama);
+        });
+        jml_kabel_fo.innerText = hasil.length;
+      });
+
+
+
+
     const jml_tiang = document.getElementById("jml_tiang");
     fetch("/api/tiang")
       .then((hasil) => hasil.json())
@@ -72,6 +98,8 @@
         jml_atribut_tiang.innerText = hasil.length;
       });
   };
+
+
 
   var map = L.map("map").setView([-0.06081, 109.34501], 18);
 
