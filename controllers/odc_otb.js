@@ -68,7 +68,10 @@ module.exports = {
       .catch((error) => res.status(400).send(error));
   },
   data_titik(req, res) {
-    return fetch(`http://203.24.50.138:8080/api/0.6/way/${req.params.id}/full.json`)
+
+    return fetch(
+      `http://203.24.50.138:8080/api/0.6/way/${req.params.id}/full.json`
+    )
       .then((hasil) => hasil.json())
       .then((hasil) => {
         if (!hasil || !hasil.elements[0]) {
