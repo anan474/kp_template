@@ -35,8 +35,10 @@ module.exports = {
       .update(
         {
           nama: req.body.nama,
-          jenis: req.body.jenis,
-          tiang: req.body.tiang,
+          jenis_klem: req.body.jenis_klem,
+          jumlah_klem: req.body.jumlah_klem,
+          tiang_nama: req.body.tiang_nama,
+          tiang_id: req.body.tiang_id,
           kode_pengadaan: req.body.kode_pengadaan,
         },
         {

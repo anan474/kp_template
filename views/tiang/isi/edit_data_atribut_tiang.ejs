@@ -1,0 +1,167 @@
+<div class="main-content flex-1 bg-gray-100 mt-12 md:mt-2 pb-24 md:pb-5">
+    <div class="bg-blue-800 p-2 shadow text-xl text-white">
+        <h3 class="font-bold pl-2">Edit Data Atribut Tiang</h3>
+    </div>
+
+    <div class="flex flex-row flex-wrap flex-grow mt-2">
+        <div class="w-full md:w-full xl:w-full p-3">
+
+            <!-- form isian -->
+            <div class="flex flex-row flex-wrap flex-grow mt-2" id="edit">
+                <div class="w-full md:w-full xl:w-full p-3">
+                    <div class="bg-white border-transparent rounded-lg shadow-lg">
+                        <div class="bg-gray-400 border-b-2 border-gray-500 rounded-tl-lg rounded-tr-lg p-2">
+                            <h5 class="font-bold uppercase text-gray-600">Edit Data</h5>
+                        </div>
+                        <div class="p-5">
+                            <form class="w-full" method="post" action="/api/atribut_tiang/edit">
+                                <input type="hidden" name="id" id="id" value="">
+                                <input type="hidden" name="tiang_nama" id="tiang_nama">
+                                <div class="flex flex-wrap -mx-3 mb-4">
+                                    <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                                        <label
+                                            class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                                            for="nama">
+                                            Nama
+                                        </label>
+                                        <input
+                                            class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                            id="nama" name="nama" type="text" placeholder="nama" />
+                                    </div>
+                                    <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                                        <label
+                                            class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                                            for="kode_pengadaan">
+                                            Kode Pengadaan
+                                        </label>
+                                        <input
+                                            class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                            id="kode_pengadaan" name="kode_pengadaan" type="text"
+                                            placeholder="Kode Pengadaan" />
+                                    </div>
+                                </div>
+
+                                <div class="flex flex-wrap -mx-3 mb-6">
+                                    <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                                        <label
+                                            class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                                            for="tiang_id">
+                                            Tiang
+                                        </label>
+                                        <div class="relative">
+                                            <select
+                                                class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                                id="tiang_id" name="tiang_id"
+                                                onchange="getNamaTiang(document.getElementById('tiang_id').value)">
+                                                <option value="">--</option>
+                                            </select>
+                                            <div
+                                                class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
+                                                    viewBox="0 0 20 20">
+                                                    <path
+                                                        d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                                        <label
+                                            class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                                            for="jenis_klem">
+                                            Jenis Klem
+                                        </label>
+                                        <div class="relative">
+                                            <select
+                                                class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                                id="jenis_klem" name="jenis_klem">
+                                                <option>-- Pilih Jenis Klem --</option>
+                                                <option value="Klem Buaya">Klem Buaya</option>
+                                                <option value="Klem Bagel">Klem Bagel</option>
+                                                <option value="Klem Suspension Capit"> Klem Suspension Capit</option>
+                                                <option value="Klem Tanduk">Klem Tanduk</option>
+                                            </select>
+                                            <div
+                                                class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
+                                                    viewBox="0 0 20 20">
+                                                    <path
+                                                        d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex flex-wrap -mx-3 mb-6">
+                                    <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                                        <label
+                                            class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                                            for="jumlah_klem">
+                                            Jumlah Klem
+                                        </label>
+                                        <input
+                                            class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                            id="jumlah_klem" name="jumlah_klem" type="number"
+                                            placeholder="Jumlah Klem" />
+                                    </div>
+                                    <div class="w-full md:w-1/2 px-3 mb-6 mt-6 md:mb-0">
+                                        <button type="submit"
+                                            class="bg-blue-500 w-full hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                                            Submit
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- form isian -->
+        </div>
+    </div>
+</div>
+
+<script>
+    window.onload = function () {
+        const data_sumber = document.getElementById("tiang_id");
+        let isi_data_sumber = "";
+        fetch("/api/tiang")
+            .then((hasil) => hasil.json())
+            .then((hasil) => {
+
+                isi_data_sumber += `<option>-- Pilih Tiang --</option>`;
+                hasil.forEach((data, index) => {
+                    isi_data_sumber += `<option value="${data.id}">${data.nama} - ${data.lokasi}</option>`;
+                });
+                data_sumber.innerHTML = isi_data_sumber;
+            });
+
+        let id = window.location.pathname.split("/").reverse()[0];
+        fetch(`/api/atribut_tiang/${id}`)
+            .then((hasil) => hasil.json())
+            .then((hasil) => {
+                document.getElementById("id").value = hasil.id
+                document.getElementById("nama").value = hasil.nama
+                document.getElementById("jenis_klem").value = hasil.jenis_klem
+                document.getElementById("jumlah_klem").value = hasil.jumlah_klem
+                document.getElementById("tiang_id").value = hasil.tiang_id
+                document.getElementById("kode_pengadaan").value = hasil.kode_pengadaan
+            });
+    };
+
+    const tiang_nama = document.getElementById("tiang_nama");
+    function getNamaTiang(id) {
+        fetch(`/api/tiang/`)
+            .then((hasil2) => hasil2.json())
+            .then((hasil2) => {
+                hasil2.forEach((data2, index) => {
+                    if (data2.id == id) {
+                        tiang_nama.value = data2.nama;
+                    }
+                });
+            });
+    }
+
+</script>

@@ -1,32 +1,450 @@
 <!DOCTYPE html>
 <html lang="en">
+<%- include('komponen/head'); %>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>Jaringan Untan | Kabel FO</title>
-  <meta name="author" content="name" />
-  <meta name="description" content="description here" />
-  <meta name="keywords" content="keywords,here" />
+  <body class="bg-gray-900 font-sans leading-normal tracking-normal mt-12">
+    <!--Nav-->
+    <%- include('komponen/header'); %>
 
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" />
-  <link href="https://unpkg.com/tailwindcss/dist/tailwind.min.css" rel="stylesheet" />
-  <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet" />
-  <script src="static/Chart.bundle.min.js"></script>
-</head>
+      <div class="flex flex-col md:flex-row">
+        <!-- Sidebar -->
+        <%- include('komponen/sidebar'); %>
 
-<body class="bg-gray-900 font-sans leading-normal tracking-normal mt-12">
-  <!--Nav-->
-  <%- include('komponen/header'); %>
+          <!-- Isi -->
+          <div class="main-content flex-1 bg-gray-100 mt-12 md:mt-2 pb-24 md:pb-5">
+            <div class="bg-blue-800 p-2 shadow text-xl text-white">
+              <h3 class="font-bold pl-2">Input Data Kabel Fiber Optik</h3>
+            </div>
+            <div class="flex flex-row flex-wrap flex-grow mt-2">
+              <div class="w-full md:w-full xl:w-full p-3">
+                <!--Table Card-->
+                <div class="bg-white border-transparent rounded-lg shadow-lg">
+                  <div class="bg-gray-400 border-b-2 border-gray-500 rounded-tl-lg rounded-tr-lg p-2">
+                    <h5 class="font-bold uppercase text-gray-600">Tabel Data Kabel Fiber Optik</h5>
+                  </div>
+                  <div id='recipients' class="p-2 rounded shadow bg-white">
 
-  <div class="flex flex-col md:flex-row">
-    <!-- Sidebar -->
-    <%- include('komponen/sidebar'); %>
+                    <table id="data_fo" class="stripe hover"
+                      style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
+                      <thead>
+                        <tr>
+                          <th data-priority="1">No</th>
+                          <th data-priority="2">Nama</th>
+                          <th data-priority="3">Jenis</th>
+                          <th data-priority="4">Jumlah Core</th>
+                          <th data-priority="5">Tipe A</th>
+                          <th data-priority="6">ID A</th>
+                          <th data-priority="7">Tipe B</th>
+                          <th data-priority="8">ID B</th>
+                          <th data-priority="9">Latitude</th>
+                          <th data-priority="10">Longitude</th>
+                          <th data-priority="11">Kode Pengadaan</th>
+                          <th data-priority="12">Objek Peta</th>
+                          <th data-priority="13">Aksi</th>
+                        </tr>
+                      </thead>
 
-    <!-- Isi -->
-    <%- include('isi/input_kabel_fo'); %>
-  </div>
-</body>
+                      <tbody id="data_tabel">
+                        <tr>
+                          <td colspan="5">Loading...</td>
+                        </tr>
+                      </tbody>
+                    </table>
+
+                  </div>
+                </div>
+                <!--/table Card-->
+
+                <!-- form isian -->
+                <div class="flex flex-row flex-wrap flex-grow mt-2">
+                  <div class="w-full md:w-full xl:w-full p-3">
+                    <div class="bg-white border-transparent rounded-lg shadow-lg">
+                      <div class="bg-gray-400 border-b-2 border-gray-500 rounded-tl-lg rounded-tr-lg p-2">
+                        <h5 class="font-bold uppercase text-gray-600">Data Baru</h5>
+                      </div>
+                      <div class="p-5">
+                        <form class="w-full" method="post" action="/api/kabel_fo">
+
+                          <div class="flex flex-wrap -mx-3 mb-6">
+                            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                              <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                                for="nama">
+                                Nama
+                              </label>
+                              <input
+                                class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                id="nama" name="nama" type="text" placeholder="Nama" />
+                            </div>
+
+                            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                              <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                                for="jenis">
+                                Jenis
+                              </label>
+                              <input
+                                class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                id="jenis" name="jenis" type="text" placeholder="Jenis" value="Single Mode" />
+                            </div>
+                          </div>
+
+                          <div class="flex flex-wrap -mx-3 mb-6">
+                            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                              <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                                for="jml_core">
+                                Jumlah Core
+                              </label>
+
+                              <select
+                                class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                id="jml_core" name="jml_core">
+                                <option value="2">2</option>
+                                <option value="6">6</option>
+                                <option value="24">24</option>
+                                <option value="48">48</option>
+                                <option value="96">96</option>
+                                <option value="144">144</option>
+                              </select>
+                            </div>
+
+                            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                              <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                                for="kode_pengadaan">
+                                Kode Pengadaan
+                              </label>
+                              <input
+                                class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                id="kode_pengadaan" name="kode_pengadaan" type="text" placeholder="Kode Pengadaan" />
+                            </div>
+                          </div>
+
+                          <div class="flex flex-wrap -mx-3 mb-6">
+                            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                              <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                                for="tipe_a">
+                                Tipe A
+                              </label>
+
+                              <select
+                                class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                id="tipe_a" name="tipe_a">
+                                <option value="1">ODC</option>
+                                <option value="2">OTB</option>
+                                <option value="3">SWITCH</option>
+                                <option value="4">ACCESS POINT</option>
+                              </select>
+                            </div>
+
+                            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                              <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                                for="id_a">
+                                ID A
+                              </label>
+                              <select
+                                class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                id="id_a" name="id_a">
+                              </select>
+                            </div>
+                          </div>
+
+                          <div class="flex flex-wrap -mx-3 mb-6">
+
+                            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                              <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                                for="tipe_b">
+                                Tipe B
+                              </label>
+
+                              <select
+                                class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                id="tipe_b" name="tipe_b">
+
+                                <option value="1">ODC</option>
+                                <option value="2">OTB</option>
+                                <option value="3">SWITCH</option>
+                                <option value="4">ACCESS POINT</option>
+                              </select>
+                            </div>
+
+                            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                              <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                                for="id_b">
+                                ID B
+                              </label>
+                              <select
+                                class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                id="id_b" name="id_b">
+                              </select>
+                            </div>
+                          </div>
+
+                          <div class="flex flex-wrap -mx-3 mb-6">
+                            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                              <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                                for="objek_peta">
+                                Objek Peta
+                              </label>
+                              <input
+                                class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                id="objek_peta" name="objek_peta" type="text" placeholder="Objek Peta" />
+                            </div>
+                            <div class="w-full md:w-1/2 px-3 mb-6 mt-6 md:mb-0">
+                              <button type="button"
+                                class="bg-blue-500 w-full hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                                onclick="ambil_data_kabel(document.getElementById('objek_peta').value)">
+                                Cek
+                              </button>
+                            </div>
+                          </div>
+
+                          <div class="flex flex-wrap -mx-3 mb-6">
+                            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                              <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                                for="lat">
+                                Latitude
+                              </label>
+                              <input
+                                class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                id="lat" name="lat" type="text" placeholder="-" readonly />
+                            </div>
+
+                            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                              <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                                for="lon">
+                                Longitude
+                              </label>
+                              <input
+                                class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                id="lon" name="lon" type="text" placeholder="-" readonly />
+                            </div>
+                          </div>
+
+                          <div class="flex flex-wrap -mx-3 mb-6">
+                            <div class="w-full px-3 mb-6 md:mb-0">
+                              <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+                                Peta
+                              </label>
+                              <div class="p-5" id="map" style="height: 200px"></div>
+                            </div>
+                          </div>
+
+                          <div class="w-full md:w-1/3 px-3 mb-6 mt-6 md:mb-0">
+                            <button type="submit"
+                              class="bg-blue-500 w-full hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                              Submit
+                            </button>
+                          </div>
+                      </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- form isian -->
+            </div>
+          </div>
+      </div>
+
+      <script>
+
+        function resolve_tipe(id) {
+          switch (id) {
+            case 1:
+              return "ODC"
+              break;
+            case 2:
+              return "OTB"
+              break;
+            case 3:
+              return "SWITCH"
+              break;
+            case 4:
+              return "ACCESS POINT"
+              break;
+            default:
+              return ""
+
+          }
+        }
+
+        function ambil_data_tipe(tipe, id) {
+          const option = document.getElementById(id);
+          let isi = "";
+          if (tipe == 1) {
+            fetch("/api/odc_otb")
+              .then((hasil) => hasil.json())
+              .then((hasil) => {
+                hasil.forEach((data, index) => {
+                  if (data.tipe == 'ODC') {
+                    isi += `
+                  <option value="${data.id}">${data.nama}</option>
+                  `;
+                  }
+                });
+                option.innerHTML = isi;
+              });
+          }//end if
+          if (tipe == 2) {
+            fetch("/api/odc_otb")
+              .then((hasil) => hasil.json())
+              .then((hasil) => {
+                hasil.forEach((data, index) => {
+                  if (data.tipe == 'OTB') {
+                    isi += `
+                  <option value="${data.id}">${data.nama}</option>
+                  `;
+                  }
+                });
+                option.innerHTML = isi;
+              });
+          }//end if          
+          if (tipe == 3) {
+            fetch("/api/switch")
+              .then((hasil) => hasil.json())
+              .then((hasil) => {
+                hasil.forEach((data, index) => {
+                  isi += `
+                  <option value="${data.id}">${data.nama}</option>
+                  `;
+                });
+                option.innerHTML = isi;
+              });
+          } //end if
+          if (tipe == 4) {
+            fetch("/api/access_point")
+              .then((hasil) => hasil.json())
+              .then((hasil) => {
+                hasil.forEach((data, index) => {
+                  isi += `
+                  <option value="${data.id}">${data.nama}</option>
+                  `;
+                });
+                option.innerHTML = isi;
+              });
+          } //end if
+
+        }
+
+        const tipe_a = document.getElementById('tipe_a');
+        tipe_a.addEventListener("change", function () {
+          ambil_data_tipe(tipe_a.value, 'id_a');
+        });
+
+        const tipe_b = document.getElementById('tipe_b');
+        tipe_b.addEventListener("change", function () {
+          ambil_data_tipe(tipe_b.value, 'id_b');
+        });
+
+
+        window.onload = function () {
+          const data_tabel = document.getElementById("data_tabel");
+          const option_tipe_a = document.getElementById('id_a');
+          const option_tipe_b = document.getElementById('id_b');
+          let isi_option = "";
+          let isi = "";
+          fetch("/api/kabel_fo")
+            .then((hasil) => hasil.json())
+            .then((hasil) => {
+              hasil.forEach((data, index) => {
+                isi += `
+                  <tr>
+                    <td>${index + 1}</td>
+                    <td>${data.nama}</td>
+                    <td>${data.jenis}</td>
+                    <td>${data.jml_core}</td>
+                    <td>${resolve_tipe(data.tipe_a)}</td>
+                    <td>${data.id_a}</td>
+                    <td>${resolve_tipe(data.tipe_b)}</td>
+                    <td>${data.id_b}</td>
+                    <td>${data.lat}</td>
+                    <td>${data.lon}</td>
+                    <td>${data.kode_pengadaan}</td>
+                    <td>
+                      <a href="http://203.24.50.138:8080/way/${data.objek_peta}" title="Lihat Pemetaan Kabel Fiber Optik di Openstreetmap" target="_black" class="text-blue-800 underline" >${data.objek_peta}</a>
+                    </td>
+                    <td>
+                      <button  onclick='if(confirm("Anda yakin mau menghapus data ini?")) { hapus(${data.id})}' type="button" class="far fa-trash-alt bg-red-500 w-24 md:w-autohover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" >
+                        Hapus
+                      </button>
+                      <a href="/kabel_fo/edit_kabel_fo/${data.id}">
+                        <button type="button" class="fa fa-edit bg-green-500 w-24 md:w-autohover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" >
+                          Edit
+                        </button>
+                      </a>
+                    </td>
+                  </tr>`;
+              });
+
+              fetch("/api/odc_otb")
+                .then((hasil) => hasil.json())
+                .then((hasil) => {
+                  hasil.forEach((data, index) => {
+                    if (data.tipe == 'ODC') {
+                      isi_option += `
+                  <option value="${data.id}">${data.nama}</option>
+                  `;
+                    }
+                  });
+                  option_tipe_a.innerHTML = isi_option;
+                  option_tipe_b.innerHTML = isi_option;
+                });
+              data_tabel.innerHTML = isi;
+            });
+        };
+
+        function ambil_data_kabel(id) {
+          if (id && !isNaN(id)) {
+            fetch(`/api/kabel_fo/data_kabel/${id}`)
+              .then((hasil) => hasil.json())
+              .then((hasil) => {
+                console.log(hasil.garis)
+                L.polyline(hasil.garis, { color: 'red' }).addTo(map);
+                map.setView([hasil.garis[0][0], hasil.garis[0][1]], 18);
+                document.getElementById("lat").value = hasil.garis[0][0];
+                document.getElementById("lon").value = hasil.garis[0][1];
+              });
+          }
+        }
+
+        function hapus(id) {
+          fetch(`/api/kabel_fo/${id}`, {
+            method: "DELETE",
+          }).then((hasil) => {
+            location.reload();
+          });
+        }
+
+        var map = L.map('map').setView([-0.06081, 109.34501], 18);
+        L.tileLayer('http://203.24.50.138:8080/hot/hot/{z}/{x}/{y}.png', {
+          attribution:
+            '&copy; <a href="https://www.openstreetmap.org/copyright">Open StreetMap</a> contributors',
+        }).addTo(map);
+
+        var hash = L.hash(map);
+
+      </script>
+
+      <!-- jQuery -->
+      <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+      <!--Datatables -->
+      <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+      <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js">
+      </script>
+      <script>
+        $(document).ready(function () {
+          setTimeout(
+            function () {
+              var table = $('#data_fo').DataTable({
+                responsive: true
+              })
+                .columns.adjust()
+                .responsive.recalc();
+            }, 500);
+        });
+      </script>
+
+      </div>
+
+  </body>
 
 </html>

@@ -3,12 +3,14 @@ module.exports = (sequelize, DataTypes) => {
     "atribut_tiang",
     {
       nama: DataTypes.STRING,
-      jenis: DataTypes.STRING,
-      tiang: DataTypes.INTEGER,
+      jenis_klem: DataTypes.STRING,
+      jumlah_klem: DataTypes.INTEGER,
+      tiang_id: DataTypes.INTEGER,
+      tiang_nama: DataTypes.STRING,
       kode_pengadaan: DataTypes.STRING,
     },
     {}
   );
-  atribut_tiang.associate = function (models) {};
+  atribut_tiang.associate = function (models) { };
   return atribut_tiang;
 };

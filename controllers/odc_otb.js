@@ -68,14 +68,18 @@ module.exports = {
       .catch((error) => res.status(400).send(error));
   },
   data_titik(req, res) {
+<<<<<<< HEAD
     return fetch(
       `http://10.128.0.207/jaringan_untan/api/0.6/node/${req.params.id}.json`
     )
+=======
+    return fetch(`http://203.24.50.138:8080/api/0.6/way/${req.params.id}/full.json`)
+>>>>>>> 26bcbb343bdb7beb9c56a7b10fb978d98f6c402c
       .then((hasil) => hasil.json())
       .then((hasil) => {
         if (!hasil || !hasil.elements[0]) {
           return res.status(404).send({
-            message: "titik peta odc tidak ditemukan",
+            message: "titik tiang tidak ditemukan",
           });
         }
         const { lat, lon } = hasil.elements[0];
