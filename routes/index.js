@@ -6,7 +6,7 @@ const routesPath = `${__dirname}/`;
 fs.readdirSync(routesPath).filter((file) => {
   const routeFile = file.split(".").slice(0, -1).join(".").toString();
   return routeFile !== "index"
-    ? router.use(`/jaringan_untan/api/${routeFile}`, require(`./${routeFile}`))
+    ? router.use(`/api/${routeFile}`, require(`./${routeFile}`))
     : "";
 });
 
@@ -45,7 +45,6 @@ router.get("/tiang/edit_tiang/:id", (req, res) => {
   res.render("tiang/edit_tiang");
 });
 
-
 router.get("/tiang/input_atribut_tiang", (req, res) => {
   res.render("tiang/atribut_tiang");
 });
@@ -53,7 +52,6 @@ router.get("/tiang/input_atribut_tiang", (req, res) => {
 router.get("/tiang/atribut_tiang/edit_atribut_tiang/:id", (req, res) => {
   res.render("tiang/edit_atribut_tiang");
 });
-
 
 // KABEL FO
 router.get("/kabel_fo", (req, res) => {
@@ -85,7 +83,6 @@ router.get("/access_point", (req, res) => {
 router.get("/access_point/input_access_point", (req, res) => {
   res.render("access_point/access_point");
 });
-
 
 /*
  * Handle 404 error
